@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* interval between updates (in ms) */
-const unsigned int interval = 1000;
+const unsigned int interval = 5000;
 
 /* text to show if no value can be retrieved */
 static const char unknown_str[] = "n/a";
@@ -65,9 +65,12 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function format          argument */
-	    { disk_perc, "[ DISK %.5s%% ]", "/" },
-	    { cpu_perc, "[ CPU %3s%% ]", NULL    },    
-    	    { ram_perc, "[ RAM %2s%% ]", NULL    },
-	    { swap_perc, "[ SWAP %2s%% ]", NULL    },
-            { datetime, "[%s]",           "%a %e %b %k:%M" }
+        { run_command, "[VPN: %s]", "piactl get connectionstate" },
+        { run_command, "[%s]", "checkvpn" },
+        { run_command, "[%s]", "piactl get pubip" },
+	    { disk_perc, "[DISK %.5s%%]", "/" },
+	    { cpu_perc, "[CPU %.5s%%]", NULL    },    
+        { ram_perc, "[RAM %.5s%%]", NULL    },
+	    /* { swap_perc, "[SWAP %2s%%]", NULL    }, */
+        { datetime, "[%s]",           "%a %e %b %k:%M" },
 };
